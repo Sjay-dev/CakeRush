@@ -49,12 +49,12 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-}
+
 
 
 @Composable
 fun DashBoardScreen(onCartClick: () -> Unit) {
-    val viewModel = MainViewModel()
+    val viewModel = CakeRushViewModel()
 
     val banners = remember { mutableStateListOf<SliderModel>() }
     val categories = remember { mutableStateListOf<CategoryModel>() }
