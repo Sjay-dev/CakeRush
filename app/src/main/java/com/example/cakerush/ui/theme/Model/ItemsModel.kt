@@ -1,4 +1,4 @@
-package com.example.cakerush.ui.theme.Model
+package com.example.cakerush.Model
 
 import java.io.Serializable
 

@@ -1,4 +1,4 @@
-package com.example.cakerush.ui.theme.View
+package com.example.cakerush.ui.theme.View.DashBoard
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,7 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -33,10 +32,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.cakerush.Model.CategoryModel
+import com.example.cakerush.Model.ItemsModel
+import com.example.cakerush.Model.SliderModel
+import com.example.cakerush.R
 import com.example.cakerush.ui.theme.CakeRushTheme
+
+import com.example.cakerush.ui.theme.ViewModel.CakeRushViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +72,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
 
 //For Banner
     LaunchedEffect(Unit) {
-        viewModel.loadBanner().observeForever {it
+        viewModel.loadBanner().observeForever {
+            it
             banners.clear()
             banners.addAll(it)
             showBannerLoading = false

@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CakeRush">
         <activity
-            android:name=".ui.theme.View.MainActivity"
+            android:name=".ui.theme.View.Detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.theme.View.ListItems.ListItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.theme.View.DashBoard.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.CakeRush">

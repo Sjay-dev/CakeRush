@@ -1,16 +1,17 @@
-package com.example.onlinestore.Model.Repository
+package com.example.cakerush.Model.Repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.cakerush.ui.theme.Model.SliderModel
-import com.example.onlinestore.Model.CategoryModel
-import com.example.onlinestore.Model.ItemsModel
-import com.example.onlinestore.Model.SliderModel
+import com.example.cakerush.Model.CategoryModel
+import com.example.cakerush.Model.ItemsModel
+import com.example.cakerush.Model.SliderModel
+
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
+
 import kotlin.collections.mutableListOf
 
 class CakeRushRepository {

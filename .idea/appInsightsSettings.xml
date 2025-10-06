@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.cakerush" />
+                  <option name="mobileSdkAppId" value="1:907902100581:android:64039ade531960a418928c" />
+                  <option name="projectId" value="cakerush-8637b" />
+                  <option name="projectNumber" value="907902100581" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

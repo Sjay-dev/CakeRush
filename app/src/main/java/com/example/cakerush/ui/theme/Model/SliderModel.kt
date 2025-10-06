@@ -1,3 +1,3 @@
-package com.example.cakerush.ui.theme.Model
+package com.example.cakerush.Model
 
 data class SliderModel(val url: String="")
