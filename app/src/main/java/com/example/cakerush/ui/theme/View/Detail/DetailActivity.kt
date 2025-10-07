@@ -37,7 +37,9 @@ import androidx.core.view.WindowInsetsCompat
 import coil3.compose.rememberAsyncImagePainter
 import com.example.cakerush.Model.ItemsModel
 import com.example.cakerush.R
+import com.example.cakerush.ui.theme.Helper.ManagmentCart
 import com.example.cakerush.ui.theme.View.BaseActivity
+import com.example.cakerush.ui.theme.View.Cart.CartActivity
 
 class DetailActivity : BaseActivity() {
 

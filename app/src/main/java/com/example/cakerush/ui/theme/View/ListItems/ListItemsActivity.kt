@@ -2,8 +2,6 @@ package com.example.cakerush.ui.theme.View.ListItems
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -31,9 +29,12 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.cakerush.R
+import com.example.cakerush.ui.theme.View.BaseActivity
+import com.example.cakerush.ui.theme.View.DashBoard.ListItemsFullSizeVertical
+import com.example.cakerush.ui.theme.ViewModel.CakeRushViewModel
 
 class ListItemsActivity : BaseActivity() {
-    private val  viewModel =  MainViewModel()
+    private val  viewModel = CakeRushViewModel()
     private var id: String = ""
     private var title:String = ""
 
@@ -57,7 +58,7 @@ class ListItemsActivity : BaseActivity() {
 private fun ListItemScreen(
     title: String,
     onBackClick:() -> Unit,
-    viewModel: MainViewModel,
+    viewModel: CakeRushViewModel,
     id:String
 ) {
     val items by viewModel.loadFiltered(id).observeAsState(emptyList())

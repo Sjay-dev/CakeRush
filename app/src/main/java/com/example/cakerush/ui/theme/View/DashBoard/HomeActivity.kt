@@ -1,6 +1,8 @@
 package com.example.cakerush.ui.theme.View.DashBoard
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -40,16 +42,19 @@ import com.example.cakerush.Model.ItemsModel
 import com.example.cakerush.Model.SliderModel
 import com.example.cakerush.R
 import com.example.cakerush.ui.theme.CakeRushTheme
+import com.example.cakerush.ui.theme.View.BaseActivity
+import com.example.cakerush.ui.theme.View.Cart.CartActivity
 
 import com.example.cakerush.ui.theme.ViewModel.CakeRushViewModel
 
-class MainActivity : ComponentActivity() {
+class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             CakeRushTheme {
-
+                DashBoardScreen{
+                    startActivity(Intent(this, CartActivity::class.java))
+                }
                 }
             }
         }
@@ -72,10 +77,10 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
 
 //For Banner
     LaunchedEffect(Unit) {
-        viewModel.loadBanner().observeForever {
-            it
+        viewModel.loadBanner().observeForever { it
             banners.clear()
             banners.addAll(it)
+            Log.i("STRESS", "BANNNERS: ${banners} ")
             showBannerLoading = false
         }
     }
@@ -85,6 +90,7 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
         viewModel.loadCategory().observeForever {it
             categories.clear()
             categories.addAll(it)
+            Log.i("STRESS", "CATEGORY: ${it} ")
             showCategoryLoading = false
         }
     }
@@ -94,6 +100,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
         viewModel.loadBestSeller().observeForever {it
             bestSeller.clear()
             bestSeller.addAll(it)
+            Log.i("STRESS", "BESTSELLER: ${it} ")
+
             showBestSellerLoading = false
         }
     }
@@ -102,7 +110,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
     ConstraintLayout(modifier = Modifier.background(Color.White))
     { val (scrollList, bottomMenu) = createRefs()
 
-        LazyColumn(modifier = Modifier.fillMaxSize()
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
             .constrainAs(scrollList) {
                 top.linkTo(parent.top)
                 bottom.linkTo(parent.bottom)
@@ -112,8 +121,10 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
         ) {
             item{
                 Row(
-                    modifier = Modifier.fillMaxSize()
-                        .padding(top = 70.dp).padding(horizontal = 16.dp),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 70.dp)
+                        .padding(horizontal = 16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ){
@@ -137,7 +148,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
             }
             item{
                 if (showBannerLoading){
-                    Box(modifier = Modifier.fillMaxSize()
+                    Box(modifier = Modifier
+                        .fillMaxSize()
                         .height(200.dp) ,
                         contentAlignment = Alignment.Center)
                     {
@@ -155,7 +167,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
                     color = Color.Black,
                     fontSize = 18.sp,
                     fontWeight = Bold,
-                    modifier = Modifier.padding(top = 24.dp)
+                    modifier = Modifier
+                        .padding(top = 24.dp)
                         .padding(horizontal = 16.dp)
                 )
             }
@@ -163,7 +176,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
             item {
                 if(showCategoryLoading){
                     Box(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
                             .height(50.dp),
                         contentAlignment = Alignment.Center
                     ){
@@ -177,8 +191,9 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
 
             item{
                 Row (
-                    modifier = Modifier.fillMaxWidth()
-                        .padding(top= 24.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 24.dp)
                         .padding(horizontal = 16.dp) ,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ){
@@ -196,7 +211,8 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
             item {
                 if (showBestSellerLoading){
                     Box(
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
                             .height(200.dp),
                         contentAlignment = Alignment.Center
                     ){
@@ -209,8 +225,9 @@ fun DashBoardScreen(onCartClick: () -> Unit) {
             }
         }
 
-        BottomMenu(modifier = Modifier.fillMaxWidth()
-            .constrainAs(bottomMenu){ bottom.linkTo(parent.bottom) }
+        BottomMenu(modifier = Modifier
+            .fillMaxWidth()
+            .constrainAs(bottomMenu) { bottom.linkTo(parent.bottom) }
             , onItemClick = onCartClick
         )
 
